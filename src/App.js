@@ -9,6 +9,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+
   const { isAuthenticated } = useAuth0();
 
   return (
