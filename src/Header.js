@@ -11,7 +11,7 @@ import {Agregar} from "./Agregar";
 import {Link} from 'react-router-dom';
 export const Header = () => {
     return (
-        <Router>
+       
        
          
        
@@ -31,7 +31,6 @@ export const Header = () => {
               
               <LogoutButton />
             </Nav>
-            <Link className='btn btn-primary' to={"/agregar"}>Agregar Producto</Link>
             
           </Navbar.Collapse>
   
@@ -42,6 +41,6 @@ export const Header = () => {
       </div>
 
  
-      </Router>
+    
     );
 }

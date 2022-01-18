@@ -16,10 +16,10 @@ function App() {
       
         {isAuthenticated ? (
           <>
-          <Header/>
-        
-            
-           <Listar/>
+       
+        <Header/>
+            <Listar/>
+           
           </>
         ) : (
           <LoginButton />
