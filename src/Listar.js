@@ -30,6 +30,19 @@ axios.get(url).then(response=>{
 })
 }
 
+borrarRegistro = (id) => {
+  console.log(id);
+  
+  fetch("http://localhost/productos/?borrar="+id)
+  .then(respuesta=>respuesta.json())
+  .then(datosRespuesta=>{
+    console.log(datosRespuesta);
+    this.peticionGet();
+ 
+  })
+  .catch(console.log);
+}
+
 peticionPost=async()=>{
 
  await axios.post(url,this.state.form).then(response=>{
@@ -75,6 +88,8 @@ handleChange = (e) => {
   this.setState(state);
 }
 
+
+
   componentDidMount() {
     this.peticionGet();
   }
@@ -84,6 +99,8 @@ handleChange = (e) => {
   const{nombre,descripcion}=this.state;
   console.log(nombre);
   console.log(descripcion);
+
+
 
   var datosEnviar = {nombre:nombre, descripcion:descripcion};
   fetch("http://localhost/productos/?insertar=1",{
@@ -116,6 +133,7 @@ handleChange = (e) => {
           <th>ID</th>
           <th>Nombre</th>
           <th>Descripcion</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -125,7 +143,13 @@ handleChange = (e) => {
             <tr>
           <td>{producto.id}</td>
           <td>{producto.nombre}</td>
-          <td>{producto.descripcion}</td>                     
+          <td>{producto.descripcion}</td> 
+          <td>
+          <Button type="button" role="group" className="btn btn-primary">Editar</Button>
+          <button type="button" class="btn btn-danger"
+          onClick={()=>this.borrarRegistro(producto.id)}
+          >Eliminar</button>
+          </td>                    
           </tr>
           )
         })}
